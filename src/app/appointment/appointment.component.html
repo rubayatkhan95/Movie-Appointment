@@ -1,0 +1,184 @@
+<style>
+    :host {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 8px 0;
+    }
+    p {
+        margin: 0;
+    }
+    .spacer {
+        flex: 1;
+    }
+    .toolbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        background-color: black;
+        color: white;
+        font-weight: 600;
+    }
+    .content {
+        display: flex;
+        margin: 82px auto 32px;
+        padding: 0 16px;
+        max-width: 800px;
+        flex-direction: column;
+        align-content: center;
+    }
+    svg.material-icons {
+        height: 24px;
+        width: auto;
+    }
+    svg.material-icons:not(:last-child) {
+        margin-right: 8px;
+    }
+    .card svg.material-icons path {
+        fill: #888;
+    }
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 16px;
+    }
+    .card {
+        border-radius: 4px;
+        border: 1px solid #eee;
+        background-color: #fafafa;
+        height: 40px;
+        width: 200px;
+        margin: 0 8px 16px;
+        padding: 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+        line-height: 24px;
+    }
+    .card-container .card:not(:last-child) {
+        margin-right: 0;
+    }
+    .card.card-small {
+        height: 16px;
+        width: 168px;
+    }
+    .card-container .card:not(.highlight-card) {
+        cursor: pointer;
+    }
+    .card-container .card:not(.highlight-card):hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+    }
+    .card-container .card:not(.highlight-card):hover .material-icons path {
+        fill: rgb(105, 103, 103);
+    }
+    .card.highlight-card {
+        background-color: #1976d2;
+        color: white;
+        font-weight: 600;
+        border: none;
+        width: auto;
+        min-width: 30%;
+        position: relative;
+    }
+    .card.card.highlight-card span {
+        margin-left: 60px;
+    }
+    .button {
+        align-self: center;
+        margin-left: 90px;
+    }
+    .field {
+        width: 60%;
+
+    }
+    .title-view {
+        text-align: center;
+        padding: 5px;
+    }
+    .title-text {
+        font-weight: bold;
+        align-self: center;
+    }
+    .title-year {
+        align-self: center;
+    }
+    .form {
+        align-self: center;
+        min-width: 200px;
+        max-width: 500px;
+    }
+    .tile-class {
+        margin-left: 50px;
+    }
+    mat-grid-tile {
+        background: lightblue;
+    }
+</style>
+
+<div class="content" role="main" >
+    <script type="text/javascript" src="app.js" charset="utf-8"></script>
+    <form [formGroup]="appopintmentForm" class="form" (ngSubmit)="SubmitForm()">
+        <mat-form-field class="field">
+            <mat-label>First Name</mat-label>
+            <input id="firstName" matInput formControlName="firstName" [(ngModel)]="userdata.firstName" placeholder="First Name">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Last Name</mat-label>
+            <input id="lastName" matInput formControlName="lastName" [(ngModel)]="userdata.lastName" placeholder="Last Name">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Email</mat-label>
+            <input id="email" matInput formControlName="email" [(ngModel)]="userdata.email" placeholder="xyz@email.com">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Phone Number</mat-label>
+            <input id="phone" matInput formControlName="phone" [(ngModel)]="userdata.phone" placeholder="01xxxxxxxxx">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Address</mat-label>
+            <input id="address" matInput formControlName="address" [(ngModel)]="userdata.address" placeholder="Address">
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Age</mat-label>
+            <input id="age" matInput formControlName="age" [(ngModel)]="userdata.age" placeholder="Age">
+        </mat-form-field>
+
+        <mat-form-field  class="field">
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" [(ngModel)]="userdata.date" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="field">
+            <mat-label>Choose a Slot</mat-label>
+            <mat-select matSelect formControlName="time" [(ngModel)]="userdata.time">
+                <mat-option *ngFor="let food of foods" [value]="food.value">
+                {{food.value}}
+                </mat-option>
+            </mat-select>
+            </mat-form-field>
+          
+        <div style="width: 300px;">
+            <button class="button" mat-raised-button color="primary" type="submit">Submit</button>
+        </div>
+
+    </form>
+</div>

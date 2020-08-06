@@ -1,0 +1,3 @@
+interface Time {
+    value: string;
+  }

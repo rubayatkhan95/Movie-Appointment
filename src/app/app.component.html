@@ -1,0 +1,179 @@
+<style>
+    :host {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 14px;
+        color: #333;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 8px 0;
+    }
+    p {
+        margin: 0;
+    }
+    .spacer {
+        flex: 1;
+    }
+    .toolbar {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        background-color: black;
+        color: white;
+        font-weight: 600;
+    }
+    .content {
+        display: flex;
+        margin: 82px auto 32px;
+        padding: 0 16px;
+        max-width: 1000px;
+        flex-direction: column;
+        align-content: center;
+    }
+    svg.material-icons {
+        height: 24px;
+        width: auto;
+    }
+    svg.material-icons:not(:last-child) {
+        margin-right: 8px;
+    }
+    .card svg.material-icons path {
+        fill: #888;
+    }
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-top: 16px;
+    }
+    .card {
+        border-radius: 4px;
+        border: 1px solid #eee;
+        background-color: #fafafa;
+        height: 40px;
+        width: 200px;
+        margin: 0 8px 16px;
+        padding: 16px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.2s ease-in-out;
+        line-height: 24px;
+    }
+    .card-container .card:not(:last-child) {
+        margin-right: 0;
+    }
+    .card.card-small {
+        height: 16px;
+        width: 168px;
+    }
+    .card-container .card:not(.highlight-card) {
+        cursor: pointer;
+    }
+    .card-container .card:not(.highlight-card):hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+    }
+    .card-container .card:not(.highlight-card):hover .material-icons path {
+        fill: rgb(105, 103, 103);
+    }
+    .card.highlight-card {
+        background-color: #1976d2;
+        color: white;
+        font-weight: 600;
+        border: none;
+        width: auto;
+        min-width: 30%;
+        position: relative;
+    }
+    .card.card.highlight-card span {
+        margin-left: 60px;
+    }
+    .button {
+        margin-left: 10px;
+    }
+    .field {
+        width: 60%;
+
+    }
+    .title-view {
+        text-align: center;
+        padding: 5px;
+    }
+    .title-text {
+        font-weight: bold;
+        align-self: center;
+    }
+    .title-year {
+        align-self: center;
+    }
+    .form {
+        align-self: center;
+        min-width: 200px;
+        max-width: 600px;
+        width: 100%;
+    }
+    .tile-class {
+        margin-left: 50px;
+    }
+    mat-grid-tile {
+        background: lightblue;
+    }
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+    <img width="40" alt="Angular Logo" src="../assets/click-movie-logo-vector_18099-274.jpg" />
+</div>
+
+<!-- Search List -->
+<div class="content" role="main" *ngIf="router.url == '/'">
+    <script type="text/javascript" src="app.js" charset="utf-8"></script>
+    <!-- <form [formGroup]="registerForm" class="form" (ngSubmit)="Submit()">
+        <mat-form-field class="field">
+            <h2>Get an appointment</h2>
+            <mat-label>Search</mat-label>
+            <input id="name" matInput formControlName="name" [(ngModel)]="user.name" placeholder="ex.Movie Name">
+            <mat-hint *ngIf="firstNameAutofilled">Autofilled!</mat-hint>
+        </mat-form-field>
+        <button class="button" mat-raised-button color="primary" type="submit" onclick="Submit()">
+            <mat-icon aria-hidden="false" aria-label="Example home icon">search</mat-icon> Search
+        </button>
+
+    </form> -->
+    <div class="form" >
+        <h1>  Get an Appointment Here!!</h1>
+        <button mat-raised-button color="primary" (click) = "clickHandler()">Go</button>
+    </div>
+</div>
+<!-- <div>
+    <mat-grid-list cols="8" rowHeight="400px">
+        <mat-grid-tile *ngFor="let tile of tiles" [colspan]="tile.cols" [rowspan]="tile.rows"
+            [style.background]="tile.color">
+            <div>
+                <div class="title-view">
+                    <h3 class="title-text">{{tile.Title}}</h3>
+                </div>
+                <div class="title-view">
+                    <img width="80%" src={{tile.Poster}} alt="No Image Found!" />
+                </div>
+                <div style="text-align:center">
+                    <h4 class="title-year"> ( {{tile.Year}} )</h4>
+                </div>
+            </div>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div> -->
+<router-outlet></router-outlet>
